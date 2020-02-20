@@ -1,7 +1,9 @@
-
+import java.util.Comparator;
+import java.util.SortedSet;
 
 public class Library {
-    private Book[] books;
+    private int id;
+    private SortedSet<Book> books;
     private int nBooks;
     private int signuptime;
     private int maxscannedbooks;
@@ -9,26 +11,36 @@ public class Library {
 
 
 
-    public Library(Book[] books, int nBooks, int signuptime, int maxscannedbooks, int libraryScore) {
-        this.books = books;
-        this.nBooks = books.length;
+    /*public Library(SortedSet<Book> books, int signuptime, int maxscannedbooks) {
+        this.nBooks = books.size();
         this.signuptime = signuptime;
         this.maxscannedbooks = maxscannedbooks;
-        this.libraryScore = calScore();
-    }
+    }*/
 
-    public int calScore(){
+    /*public int calScore(){
         int aux = 0;
         for (int i = 0; i < nBooks; i++)
-            aux += books[i].get_value();
+            aux += books.(i).get_value();
         return aux;
+    }*/
+
+    public void addBook(){
+        Book aux = new Book();
+        books.add()
     }
 
-    //return false if the library
+
+
+    //return false if the library 1 is worse than library 2
     public boolean bestLibrary(Library l1, Library l2){
         //aqui se decidira las prioridades
-        //if(signuptime <= )
-
+        if(getSignuptime() <= l2.getSignuptime()) {
+            if(getMaxscannedbooks() <= l2.getMaxscannedbooks()){
+                if (getLibraryScore() >= l2.getMaxscannedbooks()){
+                    return true;
+                }
+            }
+        }
         return false;
     }
 
