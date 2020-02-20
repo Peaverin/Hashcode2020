@@ -1,8 +1,7 @@
-import java.util.HashSet;
 import java.util.SortedSet;
 import java.util.TreeSet;
 
-public class Library {
+public class Library implements Comparable<Library> {
     private int id;
 
 
@@ -17,26 +16,28 @@ public class Library {
         this.nBooks = nBooks;
         this.signuptime = signuptime;
         this.maxscannedbooks = maxscannedbooks;
+        libraryBooks = new TreeSet<>();
     }
 
-
-    public Library(int nBooks, int signuptime, int maxscannedbooks) {
-        this.nBooks = nBooks;
-        this.signuptime = signuptime;
-        this.maxscannedbooks = maxscannedbooks;
+    public void addBook(Book book){
+        libraryBooks.add(book);
+        libraryScore += book.value;
+        book.addLibrary(this);
     }
 
-    public void addBook(int id, int value){
-        Book aux = new Book(id, value);
-        libraryBooks.add(aux);
-        libraryScore += value;
+    public boolean isEmpty(){
+        return libraryBooks.isEmpty();
     }
 
-    public void removeBook(int id, int value) {
-        //Book aux = books.get(id);
-        Book aux = new Book(id, value);
-        libraryBooks.remove(aux);
-        libraryScore -= aux.get_value();
+    public Book pollLast() {
+        Book book = libraryBooks.pollLast();
+        libraryScore -= book.get_value();
+        for(int i = 0;i<book.libraries.size();i++){
+            book.libraries.get(i).libraryBooks.remove(book);
+            book.libraries.get(i).setnBooks(book.libraries.get(i).nBooks - 1);
+        }
+        nBooks--;
+        return book;
     }
 
     //return true if the library 1 is better than library 2
@@ -122,6 +123,10 @@ public class Library {
         return nBooks;
     }
 
+    public int getId(){
+        return id;
+    }
+
     public int getSignuptime() {
         return signuptime;
     }
@@ -148,5 +153,68 @@ public class Library {
 
     public void setLibraryScore(int libraryScore) {
         this.libraryScore = libraryScore;
+    }
+
+    @Override
+    public int compareTo(Library l2) {
+        if(id == l2.getId()) return 0;
+        /*if(getSignuptime() < l2.getSignuptime()) {
+            return 1;
+        }
+        return -1;*/
+        int l1Points, l2Points;
+        l1Points = l2Points = 0;
+        if(getSignuptime() < l2.getSignuptime()) {
+            l1Points+=1;
+        }
+        else
+            l2Points+=1;
+
+        if(getLibraryScore() < l2.getLibraryScore()) {
+            l1Points+=1;
+        }
+        else
+            l2Points+=1;
+
+        if(getMaxscannedbooks() > l2.getMaxscannedbooks()) {
+            l1Points+=2;
+        }
+        else
+            l2Points+=2;
+
+        if(l1Points >= l2Points){
+            return 1;
+        }
+        return -1;
+    }
+        /*int l1Points, l2Points;
+        l1Points = l2Points = 0;
+        if(getSignuptime() < l2.getSignuptime()) {
+            l1Points+=1;
+        }
+        else
+            l2Points+=1;
+
+        if(getLibraryScore() < l2.getLibraryScore()) {
+            l1Points++;
+        }
+        else
+            l2Points+=1;
+
+        if(getMaxscannedbooks() > l2.getMaxscannedbooks()) {
+            l1Points+=1;
+        }
+        else
+            l2Points+=1;
+
+        if(l1Points >= l2Points){
+            return 1;
+        }
+        return -1;
+    }
+    */
+    @Override
+    public boolean equals(Object obj) {
+        return id == ((Library)obj).getId();
     }
 }

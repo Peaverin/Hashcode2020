@@ -1,5 +1,6 @@
 import java.io.*;
 import java.util.ArrayList;
+import java.util.TreeSet;
 
 public class IO {
     public void readInput(String fileName){
@@ -17,7 +18,7 @@ public class IO {
             int nLibraries = Integer.parseInt(splited[1]);
             int nDays = Integer.parseInt(splited[2]);
             ArrayList<Book> books = new ArrayList<>();
-            ArrayList<Library> libraries = new ArrayList<>();
+            TreeSet<Library> libraries = new TreeSet<>();
             sCurrentLine = br.readLine();
             splited = sCurrentLine.split("\\s+"); //split by spaces
 
@@ -32,7 +33,7 @@ public class IO {
                 sCurrentLine = br.readLine();
                 splited = sCurrentLine.split("\\s+"); //split by spaces
                 int amountBooks = Integer.parseInt(splited[0]);
-                Library library = new Library(amountBooks,Integer.parseInt(splited[1]),Integer.parseInt(splited[2]));
+                Library library = new Library(i, amountBooks,Integer.parseInt(splited[1]),Integer.parseInt(splited[2]));
                 libraries.add(library);
                 //Load books:
                 sCurrentLine = br.readLine();

@@ -1,21 +1,22 @@
 import java.util.*;
 
-public class Book {
+public class Book implements Comparable<Book> {
   int id;
   int value;
   int num_libs;
-  public Library[] libraries ;
+  public ArrayList<Library> libraries ;
 
   public Book(int id, int value){
       this.id = id;
       this.value = value;
+      libraries = new ArrayList<Library>();
   }
 
   public Book(int id, int value, int num_libs){
       this.id = id;
       this.value = value;
       this.num_libs = num_libs;
-      libraries = new Library[num_libs];
+      libraries = new ArrayList<Library>();
   }
 
   public int get_id() {
@@ -38,9 +39,14 @@ public class Book {
     return value >= a.get_value();
   }
 
-  public int compare(Book a, Book b) {
-    return a.value - b.value;
+  public void addLibrary(Library library){
+    libraries.add(library);
   }
 
-
+    @Override
+    public int compareTo(Book b) {
+        if (id == b.id) return 0;
+        if (value == b.value) return b.id - id;
+        return value - b.value;
+    }
 }
