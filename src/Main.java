@@ -5,9 +5,9 @@ public class Main {
     public static int AMOUNT = 100;
     public static void main(String[] args) {
         long totalTime = 0;
-        long[] totalTimes = new long[5];
-        int[] scores = new int[5];
-        final String[] fileNames = new String[]{"a_example","b_lovely_landscapes","c_memorable_moments","d_pet_pictures", "e_shiny_selfies"};
+        long[] totalTimes = new long[6];
+        int[] scores = new int[6];
+        final String[] fileNames = new String[]{"a_example","b_read_on","c_incunabula","d_tough_choices", "e_so_many_books", "f_libraries_of_the_world"};
         IO io = new IO();
         for (int i = 0;i<fileNames.length;i++) {
             String fileName = fileNames[i];

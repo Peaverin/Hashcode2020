@@ -8,9 +8,22 @@ public class IO {
             fr = new FileReader(fileName);
             br = new BufferedReader(fr);
             String sCurrentLine;
-            sCurrentLine = br.readLine(); //first line is size, we don't need it
+            sCurrentLine = br.readLine();
             String[] splited;
-            int currentId = 0;
+            splited = sCurrentLine.split("\\s+"); //split by spaces
+
+            int nBooks = Integer.parseInt(splited[0]);
+            int nLibraries = Integer.parseInt(splited[1]);
+            int nDays = Integer.parseInt(splited[2]);
+            int[] scores = new int[nBooks];
+            sCurrentLine = br.readLine();
+            splited = sCurrentLine.split("\\s+"); //split by spaces
+            for(int i = 0; i<nBooks ; i++){
+
+                scores[i] = Integer.parseInt(splited[i]);
+            }
+
+
             while ((sCurrentLine = br.readLine()) != null) {
                 //DO STUFF HERE//
                 splited = sCurrentLine.split("\\s+"); //split by spaces

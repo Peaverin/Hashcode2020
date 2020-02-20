@@ -9,6 +9,11 @@ public class Library {
     private int maxscannedbooks;
     private int libraryScore;
 
+    public Library(int nBooks, int signuptime, int maxscannedbooks){
+        this.nBooks = nBooks;
+        this.signuptime = signuptime;
+        this.maxscannedbooks = maxscannedbooks;
+    }
 
 
     /*public Library(SortedSet<Book> books, int signuptime, int maxscannedbooks) {
