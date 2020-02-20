@@ -38,5 +38,9 @@ public class Book {
     return value >= a.get_value();
   }
 
+  public int compare(Book a, Book b) {
+    return a - b;
+  }
+
 
 }
