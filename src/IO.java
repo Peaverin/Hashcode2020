@@ -1,4 +1,5 @@
 import java.io.*;
+import java.util.ArrayList;
 
 public class IO {
     public void readInput(String fileName){
@@ -15,20 +16,33 @@ public class IO {
             int nBooks = Integer.parseInt(splited[0]);
             int nLibraries = Integer.parseInt(splited[1]);
             int nDays = Integer.parseInt(splited[2]);
-            int[] scores = new int[nBooks];
+            ArrayList<Book> books = new ArrayList<>();
+            ArrayList<Library> libraries = new ArrayList<>();
             sCurrentLine = br.readLine();
             splited = sCurrentLine.split("\\s+"); //split by spaces
+
+            //Books:
             for(int i = 0; i<nBooks ; i++){
-
-                scores[i] = Integer.parseInt(splited[i]);
+                books.add(new Book(i, Integer.parseInt(splited[i])));
             }
 
-
-            while ((sCurrentLine = br.readLine()) != null) {
-                //DO STUFF HERE//
+            //Libraries:
+            for(int i = 0; i<nLibraries; i++){
+                //Load library
+                sCurrentLine = br.readLine();
                 splited = sCurrentLine.split("\\s+"); //split by spaces
-                //tagsNumber = Integer.parseInt(splited[1]);
+                int amountBooks = Integer.parseInt(splited[0]);
+                Library library = new Library(amountBooks,Integer.parseInt(splited[1]),Integer.parseInt(splited[2]));
+                libraries.add(library);
+                //Load books:
+                sCurrentLine = br.readLine();
+                splited = sCurrentLine.split("\\s+"); //split by spaces
+                for(int j = 0; j<amountBooks; j++){
+                    library.addBook(books.get(Integer.parseInt(splited[j])));
+                }
             }
+        Main.books = books;
+        Main.libraries = libraries;
         } catch (IOException e) {
             e.printStackTrace();
         } finally {
@@ -41,6 +55,7 @@ public class IO {
                 ex.printStackTrace();
             }
         }
+
     }
 
     public void outputSolution(String fileName){
