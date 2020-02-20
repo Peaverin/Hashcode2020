@@ -10,5 +10,9 @@ public class Book {
     value = v;
   }
 
+  public bolean es_mejor_que(Book a){
+    return value >= a.get_value();
+  }
+
 
 }
