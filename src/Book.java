@@ -3,10 +3,19 @@ import java.util.*;
 public class Book {
   int id;
   int value;
+  int num_libs;
+  public Library[] libraries ;
 
   public Book(int id, int value){
       this.id = id;
       this.value = value;
+  }
+
+  public Book(int id, int value, int num_libs){
+      this.id = id;
+      this.value = value;
+      this.num_libs = num_libs;
+      libraries = new Library[num_libs];
   }
 
   public int get_id() {
@@ -29,5 +38,9 @@ public class Book {
     return value >= a.get_value();
   }
 
-    
+  public int compare(Book a, Book b) {
+    return a.value - b.value;
+  }
+
+
 }
