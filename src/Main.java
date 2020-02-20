@@ -1,8 +1,12 @@
 import java.io.*;
+import java.util.ArrayList;
 import java.util.concurrent.TimeUnit;
 
 public class Main {
     public static int AMOUNT = 100;
+    public static ArrayList<Book> books;
+    public static ArrayList<Library> libraries;
+
     public static void main(String[] args) {
         long totalTime = 0;
         long[] totalTimes = new long[6];
@@ -12,6 +16,8 @@ public class Main {
         for (int i = 0;i<fileNames.length;i++) {
             String fileName = fileNames[i];
             long startTime = System.nanoTime();
+            //Read everything:
+            io.readInput(System.getProperty("user.dir")+"/"+fileName+".txt");
 
             //DO WORK HERE:
 
@@ -28,7 +34,7 @@ public class Main {
 
             scores[i] = score;
             //Output solution:
-            io.outputSolution(System.getProperty("user.dir")+"/"+fileName+"_sol_" + AMOUNT +"_"+durationInMilli +".txt");
+            io.outputSolution(System.getProperty("user.dir")+"/Solutions/"+fileName+"_sol_" + AMOUNT +"_"+durationInMilli +".txt");
 
             //Print time and score:
             System.out.println(fileName + ": " + durationInMilli + "ms | Score: " + score);

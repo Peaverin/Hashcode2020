@@ -1,0 +1,8 @@
+AMOUNT = 100
+a_example: 1ms | Score: 0
+b_read_on: 0ms | Score: 0
+c_incunabula: 0ms | Score: 0
+d_tough_choices: 0ms | Score: 0
+e_so_many_books: 0ms | Score: 0
+f_libraries_of_the_world: 0ms | Score: 0
+Total time: 1ms | Total Score: 0

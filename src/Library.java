@@ -1,5 +1,4 @@
-import java.util.Comparator;
-import java.util.SortedSet;
+import java.util.*;
 
 public class Library {
     private int id;
@@ -13,6 +12,7 @@ public class Library {
         this.nBooks = nBooks;
         this.signuptime = signuptime;
         this.maxscannedbooks = maxscannedbooks;
+        books = new TreeSet<>();
     }
 
 
@@ -29,9 +29,9 @@ public class Library {
         return aux;
     }*/
 
-    public void addBook(){
-        Book aux = new Book();
-        books.add()
+    public void addBook(Book book){
+        books.add(book);
+        libraryScore += book.value;
     }
 
 
@@ -49,7 +49,7 @@ public class Library {
         return false;
     }
 
-    public Book[] getBooks() {
+    public SortedSet<Book> getBooks() {
         return books;
     }
 
@@ -67,10 +67,6 @@ public class Library {
 
     public int getLibraryScore() {
         return libraryScore;
-    }
-
-    public void setBooks(Book[] books) {
-        this.books = books;
     }
 
     public void setnBooks(int nBooks) {
