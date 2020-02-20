@@ -7,6 +7,11 @@ public class Library {
     public int maxscannedbooks;
     public int libraryScore;
 
+    public Library(int nBooks, int signuptime, int maxscannedbooks){
+        this.nBooks = nBooks;
+        this.signuptime = signuptime;
+        this.maxscannedbooks = maxscannedbooks;
+    }
 
     public void calScore(){
         int aux = 0;

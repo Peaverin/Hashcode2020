@@ -4,6 +4,11 @@ public class Book {
   int id;
   int value;
 
+  public Book(int id, int value){
+      this.id = id;
+      this.value = value;
+  }
+
   public int get_id() {
     return id;
   }
@@ -20,7 +25,7 @@ public class Book {
     value = v;
   }
 
-  public bolean is_better_than(Book a){
+  public boolean is_better_than(Book a){
     return value >= a.get_value();
   }
 
