@@ -1,7 +1,17 @@
 import java.util.*;
 
 public class Book {
+  int id;
   int value;
+
+  public int get_id() {
+    return id;
+  }
+
+  public void set_id(int v){
+    value = v;
+  }
+
   public int get_value() {
     return value;
   }
@@ -10,7 +20,7 @@ public class Book {
     value = v;
   }
 
-  public bolean es_mejor_que(Book a){
+  public bolean is_better_than(Book a){
     return value >= a.get_value();
   }
 
